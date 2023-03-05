@@ -2,7 +2,7 @@ import moment from "moment";
 //moment().format("DD-MM-YYYY");
 
 import { dateSelector } from "../selectors";
-import { getFlights } from "../services";
+import { getFlights } from "../../services";
 
 const setNewDate = (newDate) => {
   return {

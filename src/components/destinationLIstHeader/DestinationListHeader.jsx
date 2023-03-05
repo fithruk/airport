@@ -5,8 +5,8 @@ import moment from "moment";
 
 import "./destinationListHeader.scss";
 import { recentDays } from "../utils";
-import { dateSelector, flightNumberSelector } from "../selectors";
-import * as actions from "../destinationReducer/destinationActions";
+import { dateSelector, flightNumberSelector } from "../store/selectors";
+import * as actions from "../store/destinationReducer/destinationActions";
 
 const activeLinkStyles = (prop) => {
   return {
@@ -41,7 +41,7 @@ const DestinationListHeader = ({ date, setNewDate }) => {
 
     searchParams.set("data", moment(handledDate).format("DD-MM-YYYY"));
     setSearchParams(searchParams);
-  }, [date.getDate(), location.pathname]);
+  }, [date.getDate(), location.search]);
 
   return (
     <div className="list-header">

@@ -1,4 +1,4 @@
-import { prapareDepartureData, prapareArrivalData } from "./utils";
+import { prapareDepartureData, prapareArrivalData } from "../utils";
 
 const dateSelector = (state) => {
   return state.flights.date;
@@ -11,6 +11,7 @@ const flightsSelector = (state) => {
 const departureSelector = (state) => {
   const allFlights = flightsSelector(state);
   const flightNumber = flightNumberSelector(state);
+  console.log(flightNumber);
   if (flightNumber) {
     return prapareDepartureData(allFlights.departure).filter(
       (flight) => flight.flight === flightNumber

@@ -1,8 +1,8 @@
 import { useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import * as actions from "../destinationReducer/destinationActions";
-import { flightNumberSelector } from "../selectors";
+import * as actions from "../store/destinationReducer/destinationActions";
+import { flightNumberSelector } from "../store/selectors";
 
 import "./search.scss";
 
@@ -12,6 +12,12 @@ const Search = ({ flightNumber, setFlightNumber }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!value && searchParams.get("fligthNumber")) {
+      setFlightNumber(value);
+    }
+    if (!value) {
+      return;
+    }
     setFlightNumber(value);
     searchParams.set("fligthNumber", value);
     setSearchParams(searchParams);
@@ -37,7 +43,7 @@ const Search = ({ flightNumber, setFlightNumber }) => {
           className="search__input"
           placeholder="Airline, destination or flight #"
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={(e) => setValue(e.target.value.toUpperCase())}
         />
         <button type="submit" className="search__btn">
           SEARCH

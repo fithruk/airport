@@ -3,8 +3,8 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 import moment from "moment";
 
-import * as selectors from "../selectors";
-import * as actions from "../destinationReducer/destinationActions";
+import * as selectors from "../store/selectors";
+import * as actions from "../store/destinationReducer/destinationActions";
 
 import "./destinationList.scss";
 import DestinationListHeader from "../destinationLIstHeader/DestinationListHeader";
@@ -18,6 +18,7 @@ const DestinationList = ({
 }) => {
   const date = moment(dateSelector).format("DD-MM-YYYY");
   const shouldRedirect = true;
+
   useEffect(() => {
     loadFlightsFromServer();
   }, [date]);
