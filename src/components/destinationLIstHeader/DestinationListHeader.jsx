@@ -38,10 +38,9 @@ const DestinationListHeader = ({ date, setNewDate }) => {
       ? moment(searchParams.get("data"), "DD-MM-YYYY").format("YYYY-MM-DD")
       : moment(date).format("YYYY-MM-DD");
     setNewDate(handledDate);
-
     searchParams.set("data", moment(handledDate).format("DD-MM-YYYY"));
     setSearchParams(searchParams);
-  }, [date.getDate(), location.search]);
+  }, [date.getDate(), location.search, location.pathname]);
 
   return (
     <div className="list-header">

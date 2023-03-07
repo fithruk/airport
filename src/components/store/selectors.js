@@ -11,7 +11,6 @@ const flightsSelector = (state) => {
 const departureSelector = (state) => {
   const allFlights = flightsSelector(state);
   const flightNumber = flightNumberSelector(state);
-  console.log(flightNumber);
   if (flightNumber) {
     return prapareDepartureData(allFlights.departure).filter(
       (flight) => flight.flight === flightNumber
