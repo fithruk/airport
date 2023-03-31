@@ -37,6 +37,7 @@ const loadFlightsFromServer = () => {
         })
       );
     } catch (error) {
+      alert(`Error ${error.name}, message: ${error.message}`);
       throw new Error(error);
     }
   };
